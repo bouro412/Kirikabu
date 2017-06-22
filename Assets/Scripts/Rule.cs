@@ -34,5 +34,11 @@ namespace Assets.Scripts
                 _effect.Update(matched);
             }
         }
+
+        public Rule(IMatching cond, IEffect effect)
+        {
+            _cond = cond;
+            _effect = effect;
+        }
     }
 }

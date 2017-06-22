@@ -8,6 +8,6 @@ namespace Assets.Scripts.Interface
 {
     interface IMatching
     {
-        IMatchedObjects[] Matching(GameObject[] Objects);
+        IMatchedObjects[] Matching(GameObject[] objects);
     }
 }

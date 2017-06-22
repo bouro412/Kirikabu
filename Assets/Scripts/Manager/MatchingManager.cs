@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 using Assets.Scripts.Interface;
+using Assets.Scripts.Matching;
+using Assets.Scripts.Effect;
 
 namespace Assets.Scripts.Manager
 {
@@ -24,6 +26,10 @@ namespace Assets.Scripts.Manager
         private void Start()
         {
             Instance = this;
+            _rules = new Rule[1];
+            var match = new OneObjectMatch("Cube");
+            var effect = new MoveEffect(new Vector3[] { new Vector3(0.1f, 0, 0) });
+            _rules[0] = new Rule(match, effect);
         }
 
         /// <summary>
@@ -31,6 +37,11 @@ namespace Assets.Scripts.Manager
         /// </summary>
         private void Update()
         {
+            if (ObjectManager.Instance == null)
+            {
+                Debug.Log("ObjectManager is null");
+                return;
+            }
             foreach (var rule in _rules)
             {
                 rule.ApplyRule(ObjectManager.Instance.Objects);

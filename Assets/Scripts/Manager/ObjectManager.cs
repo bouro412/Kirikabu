@@ -29,7 +29,7 @@ namespace Assets.Scripts.Manager
 
         private void Start()
         {
-              
+            Instance = this;
         }
     }
 
