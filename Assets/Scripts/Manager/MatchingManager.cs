@@ -23,13 +23,17 @@ namespace Assets.Scripts.Manager
         /// </summary>
         private Rule[] _rules;
 
+
+        
         private void Start()
         {
             Instance = this;
-            _rules = new Rule[1];
+            // for test
+            _rules = new Rule[2];
             var match = new OneObjectMatch("Cube");
             var effect = new MoveEffect(new Vector3[] { new Vector3(0.1f, 0, 0) });
             _rules[0] = new Rule(match, effect);
+            _rules[1] = new Rule(new TwoObjectCollisionMatch("Cube", "Wall"), new VanishEffect(VanishEffect.Option.First));
         }
 
         /// <summary>

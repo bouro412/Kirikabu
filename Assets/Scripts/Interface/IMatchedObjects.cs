@@ -9,6 +9,6 @@ namespace Assets.Scripts.Interface
     interface IMatchedObjects
     {
         IMatching Match { get; }
-        GameObject[] Objects { get; }
+        MatchingObject[] Objects { get; }
     }
 }

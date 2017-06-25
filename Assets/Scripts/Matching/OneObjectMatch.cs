@@ -25,11 +25,7 @@ namespace Assets.Scripts.Matching
                 var mobj = obj.GetComponent<MatchingObject>();
                 if(mobj != null && mobj.Tag == _tag)
                 {
-                    ret.Add(new MatchedObjects(this, new GameObject[] { obj}));
-                }
-                else
-                {
-                    Debug.Log("Tag not matched");
+                    ret.Add(new MatchedObjects(this, new MatchingObject[] { mobj}));
                 }
             }
             return ret.ToArray();

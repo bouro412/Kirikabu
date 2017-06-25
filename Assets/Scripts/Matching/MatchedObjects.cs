@@ -19,14 +19,14 @@ namespace Assets.Scripts.Matching
         }
 
 
-        GameObject[] _objects;
-        GameObject[] IMatchedObjects.Objects { get
+        MatchingObject[] _objects;
+        MatchingObject[] IMatchedObjects.Objects { get
             {
                 return _objects;
             }
         }
 
-        public MatchedObjects(IMatching match, GameObject[] objects)
+        public MatchedObjects(IMatching match, MatchingObject[] objects)
         {
             _match = match;
             _objects = objects;
