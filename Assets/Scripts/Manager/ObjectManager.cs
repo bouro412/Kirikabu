@@ -23,6 +23,12 @@ namespace Assets.Scripts.Manager
         }
 
         /// <summary>
+        /// プレハブリスト
+        /// </summary>
+        [SerializeField]
+        public GameObject[] PrefabList;
+
+        /// <summary>
         /// シングルトン
         /// </summary>
         public static ObjectManager Instance { get; private set; }

@@ -29,11 +29,12 @@ namespace Assets.Scripts.Manager
         {
             Instance = this;
             // for test
-            _rules = new Rule[2];
+            _rules = new Rule[3];
             var match = new OneObjectMatch("Cube");
             var effect = new MoveEffect(new Vector3[] { new Vector3(0.1f, 0, 0) });
             _rules[0] = new Rule(match, effect);
             _rules[1] = new Rule(new TwoObjectCollisionMatch("Cube", "Wall"), new VanishEffect(VanishEffect.Option.First));
+            _rules[2] = new Rule(new TimerMatching(new OneObjectMatch("Pop"), 2.0f), new GenerateEffect(ObjectManager.Instance.PrefabList[0]));
         }
 
         /// <summary>
