@@ -36,7 +36,7 @@ namespace Assets.Scripts.Effect
         }
         public MoveEffect(Func<Transform, Vector3> func)
         {
-            _directions
+            _directionFunc = func;
         }
     }
 }
