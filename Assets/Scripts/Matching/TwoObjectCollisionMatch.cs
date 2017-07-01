@@ -22,6 +22,11 @@ namespace Assets.Scripts.Matching
             {
                 if(mobj.Tag == _targetTag1)
                 {
+                    if(mobj.CollideObjects == null)
+                    {
+                        Debug.Log("CollideObjects is null");
+                        continue;
+                    }
                     foreach(var mobj2 in mobj.CollideObjects.Where(mo => mo.Tag == _targetTag2 && !(searched.Contains(mo))))
                     {
                         ret.Add(new MatchedObjects(this, new MatchingObject[2] { mobj, mobj2 }));

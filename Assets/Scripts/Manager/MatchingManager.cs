@@ -23,7 +23,7 @@ namespace Assets.Scripts.Manager
         /// </summary>
         private List<Rule> _rules;
 
-        private void Start()
+        private void Awake()
         {
             Instance = this;
             _rules = new List<Rule>();

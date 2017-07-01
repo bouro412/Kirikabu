@@ -21,25 +21,22 @@ namespace Assets.Scripts
         /// <summary>
         /// 今このオブジェクトが接触している全てのオブジェクト
         /// </summary>
-        public List<MatchingObject> CollideObjects { get; private set; }
+        public List<MatchingObject> CollideObjects { get { return _collideObjects; } }
+        private List<MatchingObject> _collideObjects = new List<MatchingObject>();
 
-        private void Start()
-        {
-            CollideObjects = new List<MatchingObject>();
-        }
 
         private void OnTriggerEnter(Collider other)
         {
             var mobj = other.GetComponent<MatchingObject>();
             if (mobj == null) return;
-            CollideObjects.Add(mobj);
+            _collideObjects.Add(mobj);
         }
 
         private void OnTriggerExit(Collider other)
         {
             var mobj = other.GetComponent<MatchingObject>();
             if (mobj == null) return;
-            CollideObjects.Remove(mobj);
+            _collideObjects.Remove(mobj);
         }
 
         private void Update()
