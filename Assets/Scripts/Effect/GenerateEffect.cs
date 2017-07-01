@@ -15,20 +15,20 @@ namespace Assets.Scripts.Effect
     class GenerateEffect : IEffect
     {
         private Vector3 _positionDiff = Vector3.zero;
-        private Quaternion _rotationDiff = Quaternion.identity;
+        private Vector3 _rotationDiff = Vector3.zero;
         private GameObject _generateObjectPrefab;
 
         void IEffect.Update(IMatchedObjects matched)
         {
-            var pos = matched.Objects[0].transform.position + _positionDiff;
-            var rot = matched.Objects[0].transform.rotation * _rotationDiff;
+            var pos = matched.Objects[0].transform.position + _generateObjectPrefab.transform.position + _positionDiff;
+            var rot = Quaternion.Euler(matched.Objects[0].transform.rotation.eulerAngles + _generateObjectPrefab.transform.rotation.eulerAngles + _rotationDiff);
             GameObject.Instantiate(_generateObjectPrefab, pos, rot, ObjectManager.Instance.transform);
         }
         public GenerateEffect(GameObject prefab)
         {
             _generateObjectPrefab = prefab;
         }
-        public GenerateEffect(GameObject prefab, Vector3 positionDiff, Quaternion rotationDiff)
+        public GenerateEffect(GameObject prefab, Vector3 positionDiff, Vector3 rotationDiff)
         {
             _positionDiff = positionDiff;
             _rotationDiff = rotationDiff;
